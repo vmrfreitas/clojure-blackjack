@@ -21,4 +21,4 @@ All notable changes to this project will be documented in this file. This change
 - Widget maker public API - `make-widget-sync`.
 
 [Unreleased]: https://sourcehost.site/your-name/clojure-blackjack/compare/0.1.1...HEAD
-[0.1.1]: https://sourcehost.site/your-name/clojure-blackjack/compare/0.1.0...0.1.1
+[0.1.1]: https://sourcehost.site/your-name/clojure-blackjack/compare/0.1.0...0.1.1"¨"'
