@@ -21,9 +21,7 @@
         points-with-a1 (reduce + cards-no-jqk)]
     (if (> points-with-a11 21) points-with-a1 points-with-a11)))
 
-(card-points [1 1 9])
-
-(defn player [player-name]
+(defn new-player [player-name]
   (let [card-1 (new-card)
         card-2 (new-card)
         cards [card-1, card-2]
@@ -32,5 +30,33 @@
      :cards       cards
      :points      points}))
 
-(card/print-player (player "Milas"))
-(card/print-player (player "Dealer"))
+(defn more-card [player]
+  (let [card (new-card)
+        cards (conj (:cards player) card)
+        new-player (update player :cards conj card)
+        points (card-points cards)]
+    (assoc new-player :points points)))
+
+(defn player-decision-continue [player]
+  (= (read-line) "yes"))
+
+(defn dealer-decision-continue [player-points dealer]
+  (let [dealer-points (:points dealer)]
+    (<= dealer-points player-points)))
+
+(defn game [player decision-fn]
+  (println (:player-name player) ": one more card?")
+  (if (decision-fn player)
+    (let [player-with-more-cards (more-card player)]
+      (card/print-player player-with-more-cards)
+      (game player-with-more-cards decision-fn))
+    player))
+
+(def player (new-player "Milas"))
+(card/print-player player)
+
+(def dealer (new-player "Dealer"))
+(card/print-player dealer)
+
+(def player-after-game (game player player-decision-continue))
+(game dealer (partial dealer-decision-continue (:points player-after-game)))
