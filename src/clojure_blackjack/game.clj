@@ -38,11 +38,8 @@
     (assoc new-player :points points)))
 
 (defn player-decision-continue [player]
-  (if (<= (:points player) 21)
-    {(println "One more card?") (= (read-line) "yes")}
-    false))
-
-
+  (println "One more card?")
+  (= (read-line) "yes"))
 
 (defn dealer-decision-continue [player-points dealer]
   (let [dealer-points (:points dealer)]
