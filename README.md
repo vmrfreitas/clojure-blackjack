@@ -1,10 +1,6 @@
 # clojure-blackjack
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+The result of me following Cesar Alcancio's [clojure tutorial](https://www.youtube.com/watch?v=f_I89ICI3x8).
 
 ## License
 
